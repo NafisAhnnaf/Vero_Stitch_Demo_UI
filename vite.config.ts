@@ -12,5 +12,6 @@ export default defineConfig({
   },
   server: {
     port: 3010,
+    allowedHosts: ["nafis-server.tail634f34.ts.net"],
   },
 })
