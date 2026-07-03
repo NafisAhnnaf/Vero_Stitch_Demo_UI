@@ -10,7 +10,7 @@ import { Meet } from "./pages/meet"
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/stitch-demo">
       <Routes>
         <Route path="/sign-in" element={<SignIn />} />
         <Route element={<AppLayout />}>
