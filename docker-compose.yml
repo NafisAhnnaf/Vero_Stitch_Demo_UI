@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: stitch-frontend
+    ports:
+      - "8080:80" # Access the frontend via http://localhost:8080
+    depends_on:
+      - api_backend
+    networks:
+      - stitch_network
+    restart: unless-stopped
+
+  api_backend:
+    # Placeholder for your actual backend API container
+    # This matches the proxy_pass http://api_backend:3000/ inside nginx.conf
+    image: node:20-alpine
+    container_name: stitch-backend
+    command: sh -c "echo 'Backend API Placeholder Running...' && tail -f /dev/null"
+    # If you want to access the API directly bypassing Nginx:
+    # ports:
+    #   - "3000:3000" 
+    networks:
+      - stitch_network
+    restart: unless-stopped
+
+networks:
+  stitch_network:
+    driver: bridge
