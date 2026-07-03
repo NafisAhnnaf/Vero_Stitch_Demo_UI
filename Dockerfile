@@ -1,24 +1,15 @@
-# Stage 1: Build the React Application
-FROM oven/bun:1 as builder
+FROM oven/bun:1
 WORKDIR /app
 
 # Install dependencies
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile
 
-# Copy source code and build
+# Copy the rest of the application
 COPY . .
-RUN bun run build
 
-# Stage 2: Serve the application with Nginx
-FROM nginx:alpine
+# Expose the Vite dev server port
+EXPOSE 3010
 
-# Remove default Nginx config and add ours
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-# Copy the built assets from the builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
-
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+# Run the dev server and expose to 0.0.0.0 so it's accessible outside the container
+CMD ["bun", "run", "dev", "--host"]
