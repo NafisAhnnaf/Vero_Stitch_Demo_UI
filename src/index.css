@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 20% 98%; /* soft off-white #F9FAFB */
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%; /* white */
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 239 84% 67%; /* Indigo #6366F1 */
+    --primary-foreground: 210 40% 98%;
+    --secondary: 200 93% 48%; /* Electric Blue #0EA5E9 */
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 239 84% 67%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 220 16% 8%; /* #111317 Level 0 */
+    --foreground: 240 10% 90%; /* #e2e2e8 */
+    --card: 222 15% 12%; /* #1A1D23 Level 1 */
+    --card-foreground: 240 10% 90%;
+    --popover: 222 15% 12%;
+    --popover-foreground: 240 10% 90%;
+    --primary: 239 84% 67%; /* Indigo #6366F1 */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 200 93% 48%; /* Electric Blue #0EA5E9 */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 220 15% 16%; /* #22252A soft filled background for inputs */
+    --muted-foreground: 240 5% 65%;
+    --accent: 220 15% 16%;
+    --accent-foreground: 240 10% 90%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 220 15% 16%; /* mostly invisible, used for soft edges */
+    --input: 220 15% 16%;
+    --ring: 239 84% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Outfit', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-background/70 backdrop-blur-[20px] border border-white/5;
+  }
+  .glass-dark {
+    @apply bg-[#1A1D23]/70 backdrop-blur-[20px] border border-white/5;
+  }
+  .shadow-soft {
+    box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.5);
+  }
+  .shadow-float {
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+  }
+}
